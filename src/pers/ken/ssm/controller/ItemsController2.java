@@ -43,7 +43,6 @@ public class ItemsController2 implements HttpRequestHandler {
 				request.setAttribute("itemsList", itemsList);
 				//设置转发的视图
 				request.getRequestDispatcher("/WEB-INF/jsp/items/itemsList.jsp").forward(request, response);
-				
 				//使用此方法可以通过修改response，设置响应的数据格式，比如响应json数据
 	}
 	

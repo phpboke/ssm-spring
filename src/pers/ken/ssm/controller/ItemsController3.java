@@ -45,7 +45,13 @@ public class ItemsController3 {
 		modelAndView.setViewName("items/itemsList");
 		
 		return modelAndView;
-		
+	}
+	
+	@RequestMapping("/test1")
+	public ModelAndView test() throws Exception{
+		String a = "this is a test zhujie";
+		System.out.print(a);
+		return null;
 	}
 
 /*	@Override

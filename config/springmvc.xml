@@ -14,14 +14,15 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
 
 	<!-- 处理器handler itemsController1 -->
-	<bean id="itemsController1"  class="pers.ken.ssm.controller.ItemsController1" />
+	<bean id="itemsController1" name="/queryItems_test.action"  class="pers.ken.ssm.controller.ItemsController1" />
 	
 	<!-- 再配置一个处理器handler itemsController2 -->
 	<bean id="itemsController2" class="pers.ken.ssm.controller.ItemsController2" />
 	
-	<!-- 处理器扫描 -->
-	<bean class="pers.ken.ssm.controller.ItemsController3" />
-	<!-- <context:component-scan base-package="pers.ken.ssm.controller"></context:component-scan> -->
+	<!-- 处理器handler itemsController3配置 -->
+	<!-- <bean class="pers.ken.ssm.controller.ItemsController34" /> -->
+	<!-- 处理器扫描加载对应包的处理器 handler -->
+	<context:component-scan base-package="pers.ken.ssm.controller"></context:component-scan>
 	
 	<!-- 处理器映射器	将bean的name作为url进行查找，需要在配置handler时指定name(即：url) -->
 	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
@@ -35,18 +36,20 @@
 			</props>
 		</property>
 	</bean>
+	
 	<!-- 注解的映射器 -->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+<!-- 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" /> -->
+	<!-- 注解的适配器 -->
+<!-- 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" /> -->
+	<!-- 实际项目中，可以用下面注解驱动代替上面的注解的映射器和适配器 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
 	
 	<!-- 处理器适配器 -->
 	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
 	<!-- 另一个处理器适配器 -->
 	<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>
-	<!-- 注解的适配器 -->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
 	
-	<!-- 视图解析器
-		解析jsp解析，默认使用jstl标签，classpath下的得有jstl的包
+	<!-- 视图解析器。解析jsp解析，默认使用jstl标签，classpath下的得有jstl的包
 	 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
